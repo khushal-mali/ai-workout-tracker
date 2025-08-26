@@ -63,10 +63,11 @@ const Layout = () => {
         options={{
           headerShown: false,
           title: "Profile",
-          href: null,
-          // tabBarIcon: ({ color, size }) => (
-          // <Image source={}/>
-          // ),
+          // href: null,
+          tabBarIcon: ({ color, size }) => (
+            // <Image source={}/>
+            <AntDesign name="user" color={color} size={size} />
+          ),
         }}
       />
     </Tabs>
