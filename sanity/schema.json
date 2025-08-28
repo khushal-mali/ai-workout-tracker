@@ -92,7 +92,7 @@
                 },
                 "optional": true
               },
-              "setDetails": {
+              "sets": {
                 "type": "objectAttribute",
                 "value": {
                   "type": "array",

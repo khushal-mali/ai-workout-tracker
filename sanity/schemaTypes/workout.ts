@@ -61,8 +61,8 @@ export default defineType({
             // }),
             defineField({
               type: 'array',
-              name: 'setDetails',
-              title: 'Set Details',
+              name: 'sets',
+              title: 'Sets',
               description: 'Detailed information for each set (reps, weight, etc.)',
               of: [
                 defineField({
@@ -143,15 +143,15 @@ export default defineType({
           preview: {
             select: {
               exerciseName: 'exercise.name',
-              setDetails: 'setDetails',
+              sets: 'sets',
               media: 'exercise.image',
             },
             prepare(selection) {
-              const {exerciseName, setDetails, media} = selection
-              const sets = Array.isArray(setDetails) ? setDetails.length : 0
+              const {exerciseName, sets, media} = selection
+              const displaySets = Array.isArray(sets) ? sets.length : 0
               return {
                 title: exerciseName || 'Exercise',
-                subtitle: `${sets || 0} sets`,
+                subtitle: `${displaySets || 0} sets`,
                 media: media,
               }
             },
