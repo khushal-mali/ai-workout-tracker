@@ -3,32 +3,7 @@ import React from "react";
 import { Exercise } from "@/lib/sanity/types";
 import { urlFor } from "@/lib/sanity/client";
 import { Ionicons } from "@expo/vector-icons";
-
-const getDifficultyColor = (difficulty: string) => {
-  switch (difficulty) {
-    case "beginner":
-      return "bg-green-500";
-    case "intermediate":
-      return "bg-yellow-500";
-    case "advance":
-      return "bg-red-500";
-    default:
-      return "bg-gray-500";
-  }
-};
-
-const getDifficultyText = (difficulty: string) => {
-  switch (difficulty) {
-    case "beginner":
-      return "Beginner";
-    case "intermediate":
-      return "Intermediate";
-    case "advance":
-      return "Advance";
-    default:
-      return "Unknown";
-  }
-};
+import { getDifficultyColor, getDifficultyText } from "@/lib/difficulty";
 
 interface ExerciseCardInterface {
   item: Exercise;

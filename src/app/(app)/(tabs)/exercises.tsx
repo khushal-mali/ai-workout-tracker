@@ -31,7 +31,7 @@ const Exercises = () => {
       // Fetch exercises from sanity
       const exercises = await client.fetch(exercisesQuery);
 
-      console.log(exercises);
+      // console.log(exercises);
 
       setExercises(exercises);
       setFilteredExercises(exercises);
