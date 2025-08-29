@@ -7,6 +7,7 @@ import { formatDuration } from "lib/utils";
 import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
+  Alert,
   SafeAreaView,
   ScrollView,
   Text,
@@ -119,6 +120,41 @@ const WorkoutRecordPage = () => {
     );
   };
 
+  const handleDeleteWorkout = () => {
+    Alert.alert(
+      "Delete",
+      "Are you sure you want to delete this workout? This action cannot be undone.",
+      [
+        { text: "Cancel", style: "cancel" },
+        { text: "Delete", style: "destructive", onPress: deleteWorkout },
+      ]
+    );
+  };
+
+  async function deleteWorkout() {
+    if (!workoutId) return;
+
+    setDeleting(true);
+
+    try {
+      await fetch("/api/delete-workout", {
+        method: "POST",
+        body: JSON.stringify({ workoutId }),
+      });
+
+      router.replace("/(app)/(tabs)/history?refresh=true");
+    } catch (error) {
+      console.error("Error deleting workout:", error);
+      Alert.alert("Error", "Failed to delete workout. Please try again.", [
+        {
+          text: "OK",
+        },
+      ]);
+    } finally {
+      setDeleting(false);
+    }
+  }
+
   if (loading) {
     return (
       <SafeAreaView className="flex-1 bg-gray-50">
@@ -165,8 +201,8 @@ const WorkoutRecordPage = () => {
           <View className="flex-row items-center justify-between mb-4">
             <Text className="text-lg font-semibold text-gray-900">Workout Summary</Text>
             <TouchableOpacity
+              onPress={handleDeleteWorkout}
               disabled={deleting}
-              // onPress={handleDeleteWorkout}
               className="bg-red-600 rounded-lg px-4 py-2 flex-row items-center"
             >
               {deleting ? (
