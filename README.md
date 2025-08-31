@@ -17,7 +17,7 @@ _A next-generation fitness tracking app powered by AI, built with React Native, 
 
 ## 🚀 Overview
 
-AI Workout Tracker is a cutting-edge mobile fitness application that combines the power of artificial intelligence with comprehensive workout tracking capabilities. Built with React Native and Expo, it delivers a seamless cross-platform experience while leveraging Sanity CMS for content management and OpenAI for intelligent fitness guidance.
+AI Workout Tracker is a cutting-edge mobile fitness application that combines the power of artificial intelligence with comprehensive workout tracking capabilities. Built with React Native and Expo, it delivers a seamless cross-platform experience while leveraging Sanity CMS for content management and Google Gemini AI for intelligent fitness guidance.
 
 ### ✨ Key Features
 
