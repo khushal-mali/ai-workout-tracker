@@ -363,7 +363,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Google Gemini Team** - For the AI capabilities
 - **Clerk Team** - For the authentication platform
 
----
+<!-- ---
 
 ## 📞 Support
 
@@ -372,9 +372,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/ai-workout-tracker/discussions)
 - **Email**: support@aiworkouttracker.com
 
----
+--- -->
 
-<div align="center">
+<!-- <div align="center">
 
 **Made with ❤️ by the AI Workout Tracker Team**
 
@@ -383,4 +383,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 [![GitHub issues](https://img.shields.io/github/issues/yourusername/ai-workout-tracker)](https://github.com/yourusername/ai-workout-tracker/issues)
 [![GitHub license](https://img.shields.io/github/license/yourusername/ai-workout-tracker)](https://github.com/yourusername/ai-workout-tracker/blob/main/LICENSE)
 
-</div>
+</div> -->
