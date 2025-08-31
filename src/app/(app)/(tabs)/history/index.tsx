@@ -10,6 +10,7 @@ import {
   ActivityIndicator,
   RefreshControl,
   ScrollView,
+  StatusBar,
   Text,
   TouchableOpacity,
   View,
@@ -38,6 +39,25 @@ export const getWorkoutsQuery = defineQuery(
     }
   }`
 );
+
+export const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  if (date.toDateString() === today.toDateString()) {
+    return "Today";
+  } else if (date.toDateString() === yesterday.toDateString()) {
+    return "Yesterday";
+  } else {
+    return date.toLocaleDateString("en-us", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    });
+  }
+};
 
 const HistoryPage = () => {
   const { user } = useUser();
@@ -83,25 +103,6 @@ const HistoryPage = () => {
     fetchWorkouts();
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    const today = new Date();
-    const yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
-
-    if (date.toDateString() === today.toDateString()) {
-      return "Today";
-    } else if (date.toDateString() === yesterday.toDateString()) {
-      return "Yesterday";
-    } else {
-      return date.toLocaleDateString("en-us", {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-      });
-    }
-  };
-
   const formatWorkoutDuration = (seconds?: number) => {
     if (!seconds) return "Duration not recorded.";
     return formatDuration(seconds);
@@ -113,7 +114,9 @@ const HistoryPage = () => {
 
   if (loading) {
     return (
-      <SafeAreaView className="flex-1 bg-gray-50">
+      <SafeAreaView className="flex-1 bg-white">
+        <StatusBar barStyle="dark-content" backgroundColor={"white"} />
+
         <View className="px-6 py-4 bg-white border-b border-gray-200">
           <Text className="text-2xl font-bold text-gray-900">Workout History</Text>
         </View>
@@ -134,7 +137,9 @@ const HistoryPage = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50">
+    <SafeAreaView className="flex-1 bg-white">
+      <StatusBar barStyle="dark-content" backgroundColor={"white"} />
+
       {/* Header */}
       <View className="px-6 py-4 bg-white border-b border-gray-200">
         <Text className="text-2xl font-bold text-gray-900">Workout History</Text>
