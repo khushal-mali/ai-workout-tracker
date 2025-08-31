@@ -130,8 +130,15 @@ const ActiveWorkout = () => {
 
       const result = await fetch("/api/save-workout", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ workoutData }),
       });
+
+      if (!result.ok) {
+        throw new Error(`Failed to save workout: ${result.status}`);
+      }
 
       console.log("Workout Saved Successfully.", result);
       return true;
@@ -144,8 +151,7 @@ const ActiveWorkout = () => {
   };
 
   const saveWorkout = () => {
-    // are you sure you want to complete the workout?
-    Alert.alert("Complete Workout", "// are you sure you want to complete the workout?", [
+    Alert.alert("Complete Workout", "Are you sure you want to complete the workout?", [
       { text: "Cancel", style: "cancel" },
       { text: "Complete", onPress: async () => endWorkout() },
     ]);
@@ -323,7 +329,8 @@ const ActiveWorkout = () => {
         {/* Workout Progress */}
         <View className="px-6 mt-4">
           <Text className="text-center text-gray-600 mb-2">
-            {workoutExercises.length} exercises
+            {workoutExercises.length}{" "}
+            {workoutExercises.length === 1 ? "exercise" : "exercises"}
           </Text>
         </View>
 
@@ -365,9 +372,9 @@ const ActiveWorkout = () => {
                       <Text className="text-xl font-bold text-gray-900 mb-2">
                         {exercise.name}
                       </Text>
-                      <Text>{exercise.sets.length} • </Text>
-                      <Text>
-                        {exercise.sets.filter((set) => set.isCompleted).length}{" "}
+                      <Text className="text-gray-600">
+                        {exercise.sets.length} sets •{" "}
+                        {exercise.sets.filter((set) => set.isCompleted).length} completed
                       </Text>
                     </View>
 
@@ -416,7 +423,7 @@ const ActiveWorkout = () => {
                               }
                               className={`border rounded-lg px-3 py-2 text-center ${
                                 set.isCompleted
-                                  ? "bg-gray-100 border-gray-300 text-gray-50"
+                                  ? "bg-gray-100 border-gray-300 text-gray-500"
                                   : "bg-white border-gray-300"
                               }`}
                               keyboardType="numeric"
@@ -431,13 +438,13 @@ const ActiveWorkout = () => {
                             </Text>
                             <TextInput
                               placeholder="0"
-                              value={set.reps}
+                              value={set.weight}
                               onChangeText={(value) =>
                                 updateSet(exercise.id, set.id, "weight", value)
                               }
                               className={`border rounded-lg px-3 py-2 text-center ${
                                 set.isCompleted
-                                  ? "bg-gray-100 border-gray-300 text-gray-50"
+                                  ? "bg-gray-100 border-gray-300 text-gray-500"
                                   : "bg-white border-gray-300"
                               }`}
                               keyboardType="numeric"
@@ -448,7 +455,7 @@ const ActiveWorkout = () => {
                           {/* Complete Button */}
                           <TouchableOpacity
                             onPress={() => toggleSetCompletion(exercise.id, set.id)}
-                            className={`w-12 h-12 rounded-xl text-center justify-center mx-1 ${
+                            className={`w-12 h-12 rounded-xl items-center justify-center mx-1 ${
                               set.isCompleted ? "bg-green-500" : "bg-gray-200"
                             }`}
                           >
@@ -494,7 +501,7 @@ const ActiveWorkout = () => {
             <TouchableOpacity
               className="bg-blue-600 rounded-2xl py-4 items-center mb-8 active:bg-blue-700"
               activeOpacity={0.8}
-              // onPress={addExercise}
+              onPress={addExercise}
             >
               <View className="flex-row items-center">
                 <Ionicons
@@ -513,8 +520,8 @@ const ActiveWorkout = () => {
               className={`rounded-2xl py-4 items-center mb-8 ${
                 isSaving ||
                 workoutExercises.length === 0 ||
-                workoutExercises.some((exercise) =>
-                  exercise.sets.some((set) => !set.isCompleted)
+                !workoutExercises.some((exercise) =>
+                  exercise.sets.some((set) => set.isCompleted)
                 )
                   ? "bg-gray-400"
                   : "bg-green-600 active:bg-green-700"
@@ -522,8 +529,8 @@ const ActiveWorkout = () => {
               disabled={
                 isSaving ||
                 workoutExercises.length === 0 ||
-                workoutExercises.some((exercise) =>
-                  exercise.sets.some((set) => !set.isCompleted)
+                !workoutExercises.some((exercise) =>
+                  exercise.sets.some((set) => set.isCompleted)
                 )
               }
             >
@@ -532,6 +539,16 @@ const ActiveWorkout = () => {
                   <ActivityIndicator size={"small"} color={"white"} />
                   <Text className="text-white font-semibold text-lg ml-2">Saving...</Text>
                 </View>
+              ) : workoutExercises.length === 0 ? (
+                <Text className="text-white font-semibold text-lg">
+                  Add Exercises First
+                </Text>
+              ) : !workoutExercises.some((exercise) =>
+                  exercise.sets.some((set) => set.isCompleted)
+                ) ? (
+                <Text className="text-white font-semibold text-lg">
+                  Complete at Least One Set
+                </Text>
               ) : (
                 <Text className="text-white font-semibold text-lg">Complete Workout</Text>
               )}

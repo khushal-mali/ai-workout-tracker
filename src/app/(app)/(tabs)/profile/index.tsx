@@ -40,18 +40,16 @@ const Profile = () => {
   }, [user?.id]);
 
   // Calculate Stats
-  const totalWorkouts = workouts.length;
-  const totalDuration = workouts.reduce(
-    (sum, workout) => sum + (workout.duration || 0),
-    0
-  );
+  const totalWorkouts = workouts?.length || 0;
+  const totalDuration =
+    workouts?.reduce((sum, workout) => sum + (workout.duration || 0), 0) || 0;
   const averageDuration =
     totalWorkouts > 0 ? Math.round(totalDuration / totalWorkouts) : 0;
 
-  // Calculate days since joining (using createaAt from Clerk)
+  // Calculate days since joining (using createdAt from Clerk)
   const joinDate = user?.createdAt ? new Date(user.createdAt) : new Date();
   const daysSinceJoining = Math.floor(
-    (new Date().getTime() - joinDate.getTime()) / (100 * 60 * 60 * 24)
+    (new Date().getTime() - joinDate.getTime()) / (1000 * 60 * 60 * 24)
   );
 
   const formatJoinDate = (date: Date) => {
@@ -103,7 +101,12 @@ const Profile = () => {
             <View className="flex-row items-center mb-4">
               <View className="w-16 h-16 bg-blue-600 rounded-full items-center justify-center mr-4">
                 <Image
-                  source={{ uri: user.externalAccounts[0]?.imageUrl ?? user?.imageUrl }}
+                  source={{
+                    uri:
+                      user?.externalAccounts?.[0]?.imageUrl ??
+                      user?.imageUrl ??
+                      undefined,
+                  }}
                   className="rounded-full"
                   style={{ width: 64, height: 64 }}
                 />

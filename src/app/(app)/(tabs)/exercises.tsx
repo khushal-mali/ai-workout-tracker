@@ -93,7 +93,7 @@ const Exercises = () => {
         renderItem={({ item }) => (
           <ExerciseCard
             item={item}
-            onPress={() => router.push(`/exercise-datail?id=${item._id}`)}
+            onPress={() => router.push(`/exercise-detail?id=${item._id}`)}
           />
         )}
         refreshControl={
