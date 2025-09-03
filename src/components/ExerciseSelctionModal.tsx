@@ -74,7 +74,10 @@ const ExerciseSelctionModal = ({
         <View className="bg-white px-4 pt-4 pb-6 shadow-sm border-b border-gray-100">
           <View className="flex-row items-center justify-between mb-4">
             <Text className="text-2xl font-bold text-gray-800">Add Exercise</Text>
-            <TouchableOpacity className="w-8 h-8 items-center justify-center">
+            <TouchableOpacity
+              className="w-8 h-8 items-center justify-center"
+              onPress={onClose}
+            >
               <Ionicons name="close" size={24} color={"#6b7280"} />
             </TouchableOpacity>
           </View>

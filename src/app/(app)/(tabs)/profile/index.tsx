@@ -9,6 +9,7 @@ import {
   Image,
   SafeAreaView,
   ScrollView,
+  StatusBar,
   Text,
   TouchableOpacity,
   View,
@@ -86,6 +87,8 @@ const Profile = () => {
 
   return (
     <SafeAreaView className="flex flex-1">
+      <StatusBar barStyle="dark-content" backgroundColor={"#f9fafb"} />
+
       <ScrollView className="flex-1">
         {/* Header */}
         <View className="px-6 pt-8 pb-6">

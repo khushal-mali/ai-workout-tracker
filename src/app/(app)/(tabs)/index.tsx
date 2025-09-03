@@ -8,6 +8,7 @@ import {
   RefreshControl,
   SafeAreaView,
   ScrollView,
+  StatusBar,
   Text,
   TouchableOpacity,
   View,
@@ -79,8 +80,10 @@ export default function HomePage() {
 
   return (
     <SafeAreaView className="flex-1 bg-gray-50">
+      <StatusBar barStyle="dark-content" backgroundColor={"#f9fafb"} />
+
       <ScrollView
-        className="flex-1"
+        className="flex-1 pb-4"
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       >
         {/* Header */}
@@ -127,7 +130,7 @@ export default function HomePage() {
 
         {/* Quick Actions */}
         <View className="px-6 mb-6">
-          <Text className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</Text>
+          <Text className="text-lg font-semibold text-gray-900 mb-2">Quick Actions</Text>
 
           {/* Start Workout Button */}
           <TouchableOpacity
@@ -150,7 +153,7 @@ export default function HomePage() {
           </TouchableOpacity>
 
           {/* Action Card */}
-          <View className="flex-row gap-4">
+          <View className="flex-row gap-4 mb-4">
             <TouchableOpacity
               className="bg-white rounded-2xl p-4 flex-1 shadow-sm border border-gray-100"
               activeOpacity={0.7}
@@ -184,8 +187,8 @@ export default function HomePage() {
 
           {/* Last Workout */}
           {lastWorkout && (
-            <View className="px-6 mb-8">
-              <Text className="text-lg font-semibold text-gray-900 mb-4">
+            <View className="mb-6">
+              <Text className="text-lg font-semibold text-gray-900 mb-2">
                 Last Workout
               </Text>
 
@@ -231,7 +234,7 @@ export default function HomePage() {
 
           {/* Empty State for No Workouts */}
           {totalWorkouts === 0 && (
-            <View className="px-6 mb-8">
+            <View className="px-6 mb-4">
               <View className="bg-white rounded-2xl p-8 items-center shadow-sm border border-gray-100">
                 <View className="w-16 h-16 bg-blue-100 rounded-full items-center justify-center mb-4">
                   <Ionicons name="barbell-outline" size={32} color={"#3b82f6"} />

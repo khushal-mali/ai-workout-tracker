@@ -1,8 +1,32 @@
 {
   "expo": {
-    "scheme": "acme",
+    "name": "Fit App",
+    "slug": "fit-app",
+    "scheme": "fitapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
     "userInterfaceStyle": "automatic",
-    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "privacy": "public",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "buildNumber": "1.0.0",
+      "bundleIdentifier": "com.khushal.fitapp"
+    },
+    "android": {
+      "package": "com.khushal.fitapp",
+      "versionCode": 1,
+      "permissions": []
+    },
     "web": {
       "output": "server"
     },
@@ -10,12 +34,18 @@
       [
         "expo-router",
         {
-          "origin": "https://n"
+          "origin": "https://fit-app.vercel.app"
         }
       ],
       "expo-secure-store"
     ],
-    "name": "fit-app",
-    "slug": "fit-app"
+    "extra": {
+      "router": {
+        "origin": "https://fit-app.vercel.app"
+      },
+      "eas": {
+        "projectId": "ad3415df-9bf4-458e-8d50-f9cb08832ef6"
+      }
+    }
   }
 }

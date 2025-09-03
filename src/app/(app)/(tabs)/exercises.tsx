@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import {
   FlatList,
   RefreshControl,
+  StatusBar,
   Text,
   TextInput,
   TouchableOpacity,
@@ -60,6 +61,7 @@ const Exercises = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-gray-50">
+      <StatusBar barStyle="dark-content" backgroundColor={"#fff"} />
       {/* Header */}
       <View className="px-6 py-4 bg-white border-b border-gray-200">
         <Text className="text-2xl font-bold text-gray-900">Exercise Library</Text>

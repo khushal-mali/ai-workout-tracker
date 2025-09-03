@@ -10,8 +10,9 @@ const Layout = () => {
 
   if (!isLoaded) {
     return (
-      <View className="flex-1 items-center justify-center">
+      <View className="flex-1 items-center justify-center bg-white">
         <ActivityIndicator color={"#0000ff"} size={"large"} />
+        <Text className="text-gray-600 mt-4">Loading...</Text>
       </View>
     );
   }

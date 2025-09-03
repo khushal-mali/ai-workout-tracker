@@ -1,0 +1,42 @@
+{
+  "cli": {
+    "version": ">= 16.18.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_SANITY_PROJECT_ID": "392yjtq4",
+        "EXPO_PUBLIC_SANITY_DATASET": "production",
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_a25vd2luZy1zdW5maXNoLTIuY2xlcmsuYWNjb3VudHMuZGV2JA",
+        "EXPO_PUBLIC_GEMINI_API_KEY": "AIzaSyCX5PsHcvuzrj0XHFXSO53r6M5m90pclyk"
+      }
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      },
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_SANITY_PROJECT_ID": "392yjtq4",
+        "EXPO_PUBLIC_SANITY_DATASET": "production",
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_a25vd2luZy1zdW5maXNoLTIuY2xlcmsuYWNjb3VudHMuZGV2JA",
+        "EXPO_PUBLIC_GEMINI_API_KEY": "AIzaSyCX5PsHcvuzrj0XHFXSO53r6M5m90pclyk"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_SANITY_PROJECT_ID": "392yjtq4",
+        "EXPO_PUBLIC_SANITY_DATASET": "production",
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_a25vd2luZy1zdW5maXNoLTIuY2xlcmsuYWNjb3VudHMuZGV2JA",
+        "EXPO_PUBLIC_GEMINI_API_KEY": "AIzaSyCX5PsHcvuzrj0XHFXSO53r6M5m90pclyk"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

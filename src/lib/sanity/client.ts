@@ -3,8 +3,8 @@ import imageUrlBuilder from "@sanity/image-url";
 
 // Client safe config
 export const config = {
-  projectId: "392yjtq4",
-  dataset: "production",
+  projectId: process.env.EXPO_PUBLIC_SANITY_PROJECT_ID || "392yjtq4",
+  dataset: process.env.EXPO_PUBLIC_SANITY_DATASET || "production",
   apiVersion: "2024-01-01",
   useCdn: false,
 };
